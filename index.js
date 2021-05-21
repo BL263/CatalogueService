@@ -2,6 +2,24 @@ import express from 'express';
 import {buildSchema} from "graphql";
 import {graphqlHTTP} from "express-graphql";
 import {makeExecutableSchema} from 'graphql-tools'
+import mongoose from 'mongoose';
+
+function ConnectDatabase(){
+
+    const promise = mongoose.connect('mongodb+srv://admin:Aa123456@catalogueservice.ti9p1.mongodb.net/catalog\n' +
+        '\n', {
+        useMongoClient: true
+    });
+
+    const db = mongoose.connection;
+
+    db.on('error', ()=> {
+        console.log('Failed to connect to mongoose')
+    })
+        .once('open', () => {
+            console.log('Connected to mongoose')
+        });
+}
 
 const typeDefs = `
   scalar DateTime,
@@ -72,7 +90,7 @@ type Mutation {
 
 const resolvers = {
     Query: {
-        products: () => {
+        products: (parent, args, context, info) => {
 
         },
         product: (parent, args, context, info) => {
@@ -95,6 +113,7 @@ const schema = makeExecutableSchema({typeDefs, resolvers})
 
 const app = express()
 app.use("/graphql", graphqlHTTP({schema: schema, graphiql: true}))
+const conn = ConnectDatabase();
 app.listen(3000)
 
 /*
@@ -109,5 +128,32 @@ sample Query for product:
     stars ,
   }
 }
+
+mutation{
+    createProduct(createProductInput:{name: "Pizza", description: "Food", price: 20, category: FOOD}) {
+    _id,
+    name,
+    createdAt,
+    description,
+    price,
+    category,
+    stars
+
+    }
+
+}
+
+query {
+  products(filter:{categories:FOOD,minStars:0,minPrice:10,maxPrice:60},sort:{value:price ,order:asc}){
+      name,
+    createdAt,
+    description,
+    price,
+    category,
+    stars
+  }
+}
+
+
 
  */
