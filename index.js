@@ -6,10 +6,7 @@ import mongoose from 'mongoose';
 
 function ConnectDatabase(){
 
-    const promise = mongoose.connect('mongodb+srv://admin:Aa123456@catalogueservice.ti9p1.mongodb.net/catalog\n' +
-        '\n', {
-        useMongoClient: true
-    });
+    const promise = mongoose.connect('mongodb+srv://admin:Aa123456@catalogueservice.ti9p1.mongodb.net/catalog');
 
     const db = mongoose.connection;
 
