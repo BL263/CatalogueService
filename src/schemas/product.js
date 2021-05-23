@@ -1,5 +1,5 @@
 import productModel from "../model/product.js";
-import("../mutation/product.mutation.js");
+import  "../mutation/product.mutation.js";
 const ProductQuery = {
   productById: productModel.ProductTC.getResolver("findById"),
   productByIds: productModel.ProductTC.getResolver("findByIds"),
@@ -19,7 +19,7 @@ const ProductMutation = {
   productRemoveById: productModel.ProductTC.getResolver("removeById"),
   productRemoveOne: productModel.ProductTC.getResolver("removeOne"),
   productRemoveMany: productModel.ProductTC.getResolver("removeMany"),
-  //fakeData: productModel.ProductTC.getResolver("product"),
+  fakeData: productModel.ProductTC.getResolver("product"),
 };
 
 export default { ProductQuery, ProductMutation };

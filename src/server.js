@@ -38,3 +38,21 @@ app.use(
     };
   })
 );
+
+
+/*
+Query sample
+query{
+  productCount
+}
+query{
+  productMany{
+    name
+    price
+    category
+  }
+}
+
+
+
+ */

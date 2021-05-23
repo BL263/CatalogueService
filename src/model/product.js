@@ -26,7 +26,7 @@ const Product = new Schema(
         ],
         category: {
             type: String,
-            enum: ["STYLE", "FOOD", "TECH", "SPORT"],
+            enum: ["STYLE", "FOOD", "TECH", "SPORT","OTHER"],
             required: true,
         },
         star: Number,
