@@ -5,6 +5,8 @@ import mongoose from 'mongoose';
 import {graphqlHTTP} from "express-graphql";
 
 import graphqlSchema from "./schemas/index.js";
+import {} from 'dotenv/config'
+
 
 const extensions = ({ context }) => {
   return {
@@ -14,9 +16,9 @@ const extensions = ({ context }) => {
 
 //app.use(logger);
 
-app.listen(3000, async () => {
-  console.log("server is running ", 3000);
-  await mongoose.connect("mongodb+srv://admin:Aa123456@catalogueservice.ti9p1.mongodb.net/catalog", {
+app.listen(process.env.port, async () => {
+  console.log("server is running ", process.env.port);
+  await mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });

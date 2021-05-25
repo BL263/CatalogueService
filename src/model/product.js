@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import {composeWithMongoose} from "graphql-compose-mongoose";
+
 const Schema = mongoose.Schema;
 
 const Product = new Schema(

@@ -1,5 +1,7 @@
 import productModel from "../model/product.js";
 import  "../mutation/product.mutation.js";
+import  "../query/product.query.js";
+
 const ProductQuery = {
   productById: productModel.ProductTC.getResolver("findById"),
   productByIds: productModel.ProductTC.getResolver("findByIds"),
@@ -8,6 +10,7 @@ const ProductQuery = {
   productCount: productModel.ProductTC.getResolver("count"),
   productConnection: productModel.ProductTC.getResolver("connection"),
   productPagination: productModel.ProductTC.getResolver("pagination"),
+  productFilter:productModel.ProductTC.getResolver("productFilter"),
 };
 
 const ProductMutation = {

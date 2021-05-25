@@ -1,6 +1,6 @@
 import faker from "faker";
 import productModel from "../model/product.js";
-
+import CommentModel from "../model/comment.js";
 
 
 const productResolver = function () {};
@@ -22,7 +22,15 @@ productResolver.fakeData = productModel.ProductTC.addResolver({
       createdAt: faker.date.recent(),
       description: ecommerce.productDescription(),
       price: ecommerce.price(),
-      comments: null,
+      comments: new CommentModel.CommentSchema({
+        title:ecommerce.product() ,
+        body: ecommerce.productDescription(),
+        star: faker.datatype.number({
+          'min': 1,
+          'max': 5
+        }),
+        date: faker.date.recent()
+      }),
       category: fakeCategory  ,
       star: faker.datatype.number({
         'min': 1,
