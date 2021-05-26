@@ -44,6 +44,19 @@ app.use(
 
 /*
 Query sample
+mutation{
+  fakeData {
+    description
+    star
+  }
+}
+query{
+ products(filterArg:{maxPrice:1000,minPrice:100,minStars:1,category:"OTHER"},sortArg:{SortingValue:price,SortingOrder:desc}){
+    name
+  price
+  }
+}
+
 query{
   productCount
 }
@@ -55,6 +68,11 @@ query{
   }
 }
 
+query{
+ products(filterArg:{maxPrice:1000,minPrice:0,minStars:1,category:"OTHER"},sortArg:{SortingValue:price,SortingOrder:asc}){
+    name
+  }
+}
 
 
  */

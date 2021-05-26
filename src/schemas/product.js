@@ -10,7 +10,7 @@ const ProductQuery = {
   productCount: productModel.ProductTC.getResolver("count"),
   productConnection: productModel.ProductTC.getResolver("connection"),
   productPagination: productModel.ProductTC.getResolver("pagination"),
-  productFilter:productModel.ProductTC.getResolver("productFilter"),
+  products:productModel.ProductTC.getResolver("products"),
 };
 
 const ProductMutation = {

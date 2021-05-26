@@ -6,15 +6,12 @@ const Filter = new Schema(
     {
         maxPrice: {
             type: Number,
-            required: true,
         },
         minPrice: {
             type: Number,
-            required: true,
         },
         minStars: {
             type: Number,
-            required: true,
         },
         category:[{
             type: String
