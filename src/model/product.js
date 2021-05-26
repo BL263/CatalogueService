@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import {composeWithMongoose} from "graphql-compose-mongoose";
-
+import Comment from "./comment.js"
 const Schema = mongoose.Schema;
 
 const Product = new Schema(
@@ -19,12 +19,7 @@ const Product = new Schema(
             type: Number,
             required: true,
         },
-        comments: [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "Comment",
-            },
-        ],
+        comments: [Comment.Comment],
         category: {
             type: String,
             enum: ["STYLE", "FOOD", "TECH", "SPORT","OTHER"],

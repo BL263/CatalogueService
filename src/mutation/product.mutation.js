@@ -5,7 +5,7 @@ import CommentModel from "../model/comment.js";
 
 const productResolver = function () {};
 productResolver.fakeData = productModel.ProductTC.addResolver({
-  name: "product",
+  name: "fakeProduct",
   type: productModel.ProductTC,
   args: { record: productModel.ProductTC.getInputType() },
   resolve: async ({ source, args }) => {
@@ -39,6 +39,33 @@ productResolver.fakeData = productModel.ProductTC.addResolver({
     });
     return await product.save();
   },
+});
+
+productResolver.createProduct = productModel.ProductTC.addResolver({
+    name: "createProduct",
+    type: productModel.ProductTC,
+    args: { record: productModel.ProductTC.getInputType() },
+    resolve: async ({ source, args }) => {
+
+        // todo fix comment to get from input
+      let comment=  new CommentModel.CommentSchema({
+            title:args.record.comments.title ,
+            body: args.record.comments.body,
+            star: args.record.comments.star,
+            date:args.record.comments.date
+        }).save()
+
+        let product = new productModel.ProductSchema({
+            name:args.record.name ,
+            createdAt: args.record.createdAt,
+            description: args.record.description,
+            price: args.record.price,
+            comments:comment ,
+            category: args.record.category  ,
+            star: args.record.star,
+        });
+        return await product.save();
+    },
 });
 
 export default  productResolver;

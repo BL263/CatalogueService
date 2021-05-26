@@ -24,6 +24,7 @@ const Comment = new Schema(
 );
 
 export default {
+    Comment:Comment,
   CommentSchema: mongoose.model("comments", Comment),
   CommentTC: composeWithMongoose(mongoose.model("comments", Comment)),
 };

@@ -22,7 +22,8 @@ const ProductMutation = {
   productRemoveById: productModel.ProductTC.getResolver("removeById"),
   productRemoveOne: productModel.ProductTC.getResolver("removeOne"),
   productRemoveMany: productModel.ProductTC.getResolver("removeMany"),
-  fakeData: productModel.ProductTC.getResolver("product"),
+  fakeData: productModel.ProductTC.getResolver("fakeProduct"),
+  createProduct: productModel.ProductTC.getResolver("createProduct"),
 };
 
 export default { ProductQuery, ProductMutation };
